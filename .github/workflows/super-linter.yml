@@ -11,6 +11,7 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+
 jobs:
   run-lint:
     runs-on: ubuntu-latest
@@ -18,8 +19,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
+
+      - name: Show files
+        run: ls -l
 
       - name: Lint Code Base
         uses: github/super-linter@v4
